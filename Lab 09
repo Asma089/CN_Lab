@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<math.h>
+
+#define capacity 100
+
+void main()
+{
+    int curr_storage=0;
+    int out_rate=4;
+    int count=0;
+    
+    while(count<10)
+    {
+        int n;
+        printf("Enter the data value: ");
+        scanf("%d",&n);
+        curr_storage=curr_storage+n;
+        
+        if (curr_storage>capacity)
+        {
+            count++;
+            curr_storage=curr_storage-n;
+            printf("The data can not be added to the bucket!\n");
+            curr_storage=curr_storage-out_rate;
+            printf("The current storage of bucket is :%d \n", curr_storage);
+        }
+        else 
+        {
+            count++;
+            if (curr_storage<out_rate)
+            {
+            printf("The outflow of data is %d \n", curr_storage);
+            curr_storage=0;
+            printf("The current storage of bucket is :%d \n", curr_storage);
+            }
+            else 
+            {
+           printf("The current storage of bucket is :%d \n", curr_storage);
+           curr_storage=curr_storage-out_rate;
+           printf("The current storage of bucket is :%d \n", curr_storage);
+           count++;
+            }
+        }
+    }
+}
